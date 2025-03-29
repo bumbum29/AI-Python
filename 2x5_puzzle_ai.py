@@ -37,6 +37,19 @@ def is_solvable(state):
                 inversion_count += 1
     return inversion_count % 2 == 0
 
+# 맨해튼 거리 계산 함수 (A*에서 사용)
+def manhattan_distance(state):
+    distance = 0
+    for r in range(ROWS):
+        for c in range(COLS):
+            value = state[r][c]
+            if value == 0:
+                continue
+            target_r = (value - 1) // COLS
+            target_c = (value - 1) % COLS
+            distance += abs(r - target_r) + abs(c - target_c)
+    return distance
+    
 # 빈칸 위치
 def find_zero(state):
     for r in range(ROWS):
