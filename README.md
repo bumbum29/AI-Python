@@ -15,6 +15,104 @@
 <summary>펼치기</summary>
 
 
+# 🧩 2x5 퍼즐 문제 - A* & 다익스트라 알고리즘
+
+> 2행 5열(총 10칸)의 퍼즐을 **A\*** 및 **다익스트라(Dijkstra)** 알고리즘으로 해결하는 Python 구현입니다.
+
+---
+
+## 📌 문제 설명
+
+- 퍼즐 형태: 2행 × 5열 (총 10개의 숫자 블록: 1~9 + 빈칸(0))
+- 목표 상태:
+  ```
+  [[1, 2, 3, 4, 5],
+   [6, 7, 8, 9, 0]]
+  ```
+
+- 각 숫자는 상하좌우로 이동 가능하며, 빈칸과 자리를 교체함으로써 퍼즐을 풀어감
+
+---
+
+## ⚙️ 주요 기능
+
+### ✅ 상태 표현 및 조작
+- 퍼즐 상태는 2차원 리스트로 표현
+- 상태를 튜플로 변환하여 `set`에 저장 (중복 방지)
+- `flatten(state)`로 1차원 변환 → **inversion count**를 통해 풀 수 있는 퍼즐인지 판단
+
+### ✅ 이동 방향
+```python
+MOVES = [(-1, 0), (1, 0), (0, -1), (0, 1)]  # 상, 하, 좌, 우
+```
+
+---
+
+## 🚀 알고리즘 설명
+
+### A* (A-Star) 알고리즘
+- `f = g + h` 방식 사용
+- `g`: 이동 횟수 (깊이)
+- `h`: 휴리스틱 (맨해튼 거리)
+
+### Dijkstra 알고리즘
+- `f = g` 만 사용하는 단순 최단 거리 탐색
+- 두 알고리즘 모두 우선순위 큐(힙)를 사용
+
+---
+
+## 🔍 주요 함수
+
+| 함수 이름 | 설명 |
+|-----------|------|
+| `is_solvable(state)` | 퍼즐이 풀 수 있는 상태인지 검사 |
+| `manhattan_distance(state)` | 휴리스틱 계산 (A*용) |
+| `search_puzzle_algorithm(state, search_type='a_star')` | 퍼즐 탐색 함수 (A* 또는 Dijkstra) |
+| `generate_random_state()` | 무작위 퍼즐 상태 생성 |
+
+---
+
+## 🧪 실행 예시
+
+```bash
+python 2x5_puzzle_ai.py
+```
+
+### 출력 예시:
+```
+Initial State:
+[6, 3, 1, 4, 0]
+[7, 8, 2, 9, 5]
+✅ 이 퍼즐은 해결 가능한 상태입니다.
+
+A* Algorithm Result:
+Minimum Moves: 22
+Execution Time: 0.0123 seconds
+
+Dijkstra Algorithm Result:
+Minimum Moves: 22
+Execution Time: 0.0548 seconds
+```
+
+---
+
+## 📚 참고
+
+- 알고리즘: A*, Dijkstra
+- 언어: Python 3.x
+- 구조: 우선순위 큐, 휴리스틱 탐색
+- 퍼즐 유형: 2x5 슬라이딩 퍼즐
+
+---
+
+## 🖼️ 결과 이미지
+
+아래는 코드 실행 결과입니다:
+
+![2*5 Solution](2x5_solution.png)
+
+---
+
 
 
 </details>
@@ -115,10 +213,6 @@ python eight_queens_ga.py
 3. 출력 예시:
 
 ```
-Generation 0: Best Fitness = 21
-Generation 1: Best Fitness = 24
-...
-Generation 6: Best Fitness = 28
 🎉 Solution found at generation 6
 🧠 Final Solution: [0, 4, 7, 5, 2, 6, 1, 3]
 ```
