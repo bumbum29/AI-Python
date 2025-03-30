@@ -173,17 +173,6 @@ calculate_fitness(individual)
 
 ---
 
-## 📈 세대별 적합도 출력
-
-```python
-print(f"Generation {generation}: Best Fitness = {best_fitness}")
-```
-
-- 각 세대마다 최고 적합도 출력
-- 진화 진행 상황 확인 가능
-
----
-
 ## 🎨 시각화 (matplotlib)
 
 ```python
@@ -203,11 +192,11 @@ pip install matplotlib
 
 ## 🧪 실행 방법
 
-1. 코드 저장 (`eight_queens_ga.py`)
+1. 코드 저장 (`8_queens_puzzle.py`)
 2. 실행
 
 ```bash
-python eight_queens_ga.py
+python 8_queens_puzzle.py
 ```
 
 3. 출력 예시:
